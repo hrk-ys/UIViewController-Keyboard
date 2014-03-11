@@ -57,11 +57,12 @@ static void swizzInstance(Class class, SEL originalSel, SEL newSel)
     [self keyboard_viewWillDisappear:animated];
     
     if (self.enableKeyboardResize) {
-        NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center removeObserver:self name:UIKeyboardWillShowNotification object:nil];
         [center removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     }
 }
+
 #pragma mark -
 #pragma mark -- UIKeyboardWillShowNotification --
 
@@ -79,7 +80,7 @@ static void swizzInstance(Class class, SEL originalSel, SEL newSel)
     newViewFrame.size.height = keyboardTop - self.view.bounds.origin.y;
     
     UIViewAnimationCurve animationCurve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] integerValue];
-
+    
     NSValue *animationDurationValue =
     [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
@@ -106,7 +107,7 @@ static void swizzInstance(Class class, SEL originalSel, SEL newSel)
      doubleValue];
     
     UIViewAnimationCurve animationCurve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] integerValue];
-
+    
     CGRect frame = self.view.frame;
     frame.size.height = keyboardRect.origin.y;
     

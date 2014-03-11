@@ -11,6 +11,7 @@
 #import "UIViewController+Keyboard.h"
 
 @interface ViewController ()
+<UITextFieldDelegate>
 
 @end
 
@@ -28,6 +29,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
